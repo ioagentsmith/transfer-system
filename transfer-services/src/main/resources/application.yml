@@ -1,0 +1,53 @@
+server:
+  servlet:
+    context-path: /transfer/services
+  port: 8080
+spring:
+  application:
+    name: transfer-services
+  profiles:
+    active: LOCAL
+  datasource:
+    name: accountsdb
+    url: jdbc:h2:~/accountsdb;DB_CLOSE_DELAY=-1
+    username: root
+    password: root
+    tomcat:
+      max-active: 50
+  h2:
+    console:
+      enabled: true
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        generate_statistics: true
+        format_sql: true
+        ddl-auto: create
+    show-sql: true
+
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: ["health", "info"]
+#  jpa:
+#    database: db2
+#    show-sql: false
+#    hibernate:
+#      ddl-auto: create
+#      naming_strategy: org.hibernate.cfg.DefaultNamingStrategy
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.DB2Dialect
+#        hbm2ddl:
+#          auto: none
+#        temp:
+#          use_jdbc_metadata_defaults: false
+#exception:
+#  messages:
+#    invalidDigitalId: Invalid DigitalId
+#    badCredentials: Bad credentials
+#    unauthorised: Unauthorised
+#    digitalIdNotFound: DigitalId not found
+#    ssoGenerationFailed: Unable to generate SSO Token

@@ -1,0 +1,131 @@
+{
+	"info": {
+		"_postman_id": "0629a600-6a71-4f05-a140-4d80b3f25caf",
+		"name": "Transfer Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Open Account",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ibanAccountNumber\": \"SA44 2000 0001 2345 6789 1234\",\r\n    \"accountName\": \"Mr. Saudi Man\",\r\n    \"balance\": \"1500.00\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/transfer/services/openAccounts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transfer",
+						"services",
+						"openAccounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Account",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ibanAccountNumber\": \"NL91 ABNA 0417 1643 00\",\r\n    \"accountName\": \"Mr. Christoff Smith\",\r\n    \"balance\": \"1000.00\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/transfer/services/findAccounts/SA4420000001234567891234",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transfer",
+						"services",
+						"findAccounts",
+						"SA4420000001234567891234"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Transfer Funds",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"fromAccount\": {\n\t    \"ibanAccountNumber\": \"NL91 ABNA 0417 1643 00\"\n\t},\n\t\"toAccount\": {\n\t    \"ibanAccountNumber\": \"DE91 1000 0000 0123 4567 89\"\n\t},\n\t\"debitAmount\": \"500\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/transfer/services/transferFunds",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transfer",
+						"services",
+						"transferFunds"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accountName\": \"Mr. Christoff Smith\",\r\n    \"ibanAccountNumber\": \"NL91 ABNA 0417 1643 00\",\r\n    \"balance\": \"1000.00\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/transfer/services/actuator/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transfer",
+						"services",
+						"actuator",
+						"health"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
